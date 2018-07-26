@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MadarSoftTask</string>
+    <string name="add">Add</string>
+    <string name="denied_permission_message">\"This app \" would like your permission to use location for better performance .</string>
+</resources>

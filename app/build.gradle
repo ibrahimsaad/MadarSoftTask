@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.example.ibrahimsaad.madarsofttask"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+
+        debug{
+            buildConfigField 'String', "ApiKey", My_ApiKey
+            resValue 'string', "api_key", My_ApiKey
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', "ApiKey", My_ApiKey
+            resValue 'string', "api_key", My_ApiKey
+        }
+    }
+}
+
+ext {
+    supportLibraryVersion = '27.1.1'
+    butterKnifeVersion = '8.8.1'
+    retrofitVersion = '2.3.0'
+    permissionsDispatcherVersion = '3.1.0'
+    googlePlayServicerVersion = '15.0.1'
+    archComponentVersion = '1.1.1'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    implementation "com.android.support:design:$supportLibraryVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+    implementation("com.github.hotchemi:permissionsdispatcher:$permissionsDispatcherVersion")
+            {
+                exclude module: "support-v13"
+            }
+    annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:$permissionsDispatcherVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    implementation "com.google.android.gms:play-services-maps:$googlePlayServicerVersion"
+    implementation "android.arch.lifecycle:extensions:$archComponentVersion"
+    implementation "android.arch.persistence.room:runtime:$archComponentVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$archComponentVersion"
+
+}
